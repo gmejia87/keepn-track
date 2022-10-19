@@ -9,9 +9,4 @@ const db = mysql.createConnection({
   database: "keepntrack",
 });
 
-db.connect((err) => {
-  if (err) throw err;
-  else console.log("YAY");
-});
-
 module.exports = db;
