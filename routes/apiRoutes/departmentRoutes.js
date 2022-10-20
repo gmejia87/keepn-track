@@ -37,8 +37,8 @@ router.post("/departments", ({ body }, res) => {
 });
 
 //delete a department
-router.delete("/departments", (req, res) => {
-  const sql = `DELETE FROM department WHERE = ?`;
+router.delete("/departments/:id", (req, res) => {
+  const sql = `DELETE FROM department WHERE id = ?`;
 
   db.query(sql, req.params.id, (err, result) => {
     if (err) {
