@@ -10,15 +10,15 @@ VALUES
 INSERT INTO role
     (title, salary, department_id)
 VALUES
-    ('Manager', 100000, 1),
+    ('Stem Manager', 100000, 1),
     ('Driver', 50000, 1),
     ('CLS', 90000, 1),
-    ('Manager', 100000, 2),
+    ('Labor Manager', 100000, 2),
     ('Collector', 75000, 2),
-    ('Clerk', 40000, 2),
+    ('Labor Clerk', 40000, 2),
     ('Team Lead', 75000, 3),
     ('Collector Lead', 75000, 3),
-    ('Cleark', 40000, 3);
+    ('Delivery Clerk', 40000, 3);
 
 INSERT INTO employee
     (first_name, last_name, role_id, manager_id)
