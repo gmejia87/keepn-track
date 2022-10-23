@@ -41,7 +41,7 @@ const promptUser = () => {
         updateEmployeerole();
       }
       // else if (answer.type === "Update Employee Manager") {
-      //   updateEmployeeManager();
+      //   updateEmployeemanager();
       // } else if (answer.type === "Delete a Department") {
       //   deleteDepartment();
       // } else if (answer.type === "Delete a Role") {
@@ -53,21 +53,27 @@ const promptUser = () => {
 };
 
 function viewDepartments() {
-  db.findAllDepartments().then(([departments]) => {
-    console.table(departments);
-  });
+  db.findAllDepartments()
+    .then(([departments]) => {
+      console.table(departments);
+    })
+    .then(() => promptUser());
 }
 
 function viewRoles() {
-  db.findAllRoles().then(([roles]) => {
-    console.table(roles);
-  });
+  db.findAllRoles()
+    .then(([roles]) => {
+      console.table(roles);
+    })
+    .then(() => promptUser());
 }
 
 function viewEmployees() {
-  db.findAllEmployees().then(([employees]) => {
-    console.table(employees);
-  });
+  db.findAllEmployees()
+    .then(([employees]) => {
+      console.table(employees);
+    })
+    .then(() => promptUser());
 }
 
 function addDepartment() {
@@ -80,9 +86,11 @@ function addDepartment() {
       },
     ])
     .then((answer) => {
-      db.addDepartment(answer).then(() => {
-        console.log(`Department ${answer.name} added.`);
-      });
+      db.addDepartment(answer)
+        .then(() => {
+          console.log(`Department ${answer.name} added.`);
+        })
+        .then(() => promptUser());
     });
 }
 
@@ -107,9 +115,11 @@ function addRole() {
       },
     ])
     .then((answer) => {
-      db.addRole(answer).then(() => {
-        console.log(`Role ${answer.title} added.`);
-      });
+      db.addRole(answer)
+        .then(() => {
+          console.log(`Role ${answer.title} added.`);
+        })
+        .then(() => promptUser());
     });
 }
 
@@ -140,9 +150,11 @@ function addEmployee() {
       },
     ])
     .then((answer) => {
-      db.addEmployee(answer).then(() => {
-        console.log(`Employee ${answer.first_name} added.`);
-      });
+      db.addEmployee(answer)
+        .then(() => {
+          console.log(`Employee ${answer.first_name} added.`);
+        })
+        .then(() => promptUser());
     });
 }
 
@@ -173,28 +185,65 @@ function updateEmployeerole() {
       },
     ])
     .then((answer) => {
-      db.updateEmployeerole(answer).then(() => {
-        console.log(`Updated employee's role.`);
-      });
+      db.updateEmployeerole(answer)
+        .then(() => {
+          console.log(`Updated ${answer.first_name} role.`);
+        })
+        .then(() => promptUser());
     });
 }
 
-// function updateEmployeemanager()
+// function updateEmployeemanager() {
+//   inquirer
+//     .prompt([
+//       {
+//         type: "list",
+//         name: "first_name",
+//         message: "Which employee's manager do you want to update?",
+//         choices: [
+//           "Daffy",
+//           "Minni",
+//           "Cindy",
+//           "The",
+//           "Mayor",
+//           "Simon",
+//           "Nemo",
+//           "Dory",
+//           "Sally",
+//         ],
+//       },
+//       {
+//         type: "list",
+//         name: "manager_id",
+//         message: "Who's the employee's new manager?",
+//         choices: ["1", "4", "7"],
+//       },
+//     ])
+//     .then((answer) => {
+//       db.updateEmployeerole(answer)
+//         .then(() => {
+//           console.log(`Updated ${answer.first_name} manager.`);
+//         })
+//         .then(() => promptUser());
+//     });
+// }
 
 // function deleteDepartment() {
 //   inquirer
 //     .prompt([
 //       {
 //         type: "list",
-//         name: "name",
+//         name: "id",
 //         message: "What department do you want to delete?",
-//         choices: ["Stem", "Labor", "Delivery"],
+//         choices: ["1", "2", "3"],
 //       },
 //     ])
 //     .then((answer) => {
-//       db.deleteDepartment(answer).then(() => {
-//         console.log(`Deparment deleted.`);
-//       });
+//       db.deleteDepartment(answer)
+//         .then(() => {
+//           console.log(`Deparment ${answer.id} deleted.`);
+//         })
+//         .then(() => promptUser());
 //     });
 // }
 
@@ -211,7 +260,7 @@ function updateEmployeerole() {
 //     .then((answer) => {
 //       db.deleteRole(answer).then(() => {
 //         console.log(`Role deleted.`);
-//       });
+//       }).then(() => promptUser());
 //     });
 // }
 // function deleteEmployee() {
@@ -227,7 +276,7 @@ function updateEmployeerole() {
 //     .then((answer) => {
 //       db.deleteRole(answer).then(() => {
 //         console.log(`Role deleted.`);
-//       });
+//       }).then(() => promptUser());
 //     });
 // }
 

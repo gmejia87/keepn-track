@@ -45,18 +45,30 @@ class DB {
       .query("INSERT INTO employee SET ?", employee);
   }
 
-  updateEmployeerole() {
+  updateEmployeerole(answer) {
+    const { first_name, role_id } = answer;
     return this.connection
       .promise()
-      .query("UPDATE employee SET role_id = ? WHERE id = ?");
+      .query("UPDATE employee SET role_id = ? WHERE first_name = ?", [
+        role_id,
+        first_name,
+      ]);
   }
 
-  // updateEmployeemanager()
-
-  //   deleteDepartment(department) {
+  //   updateEmployeemanager() {
+  //     const { first_name, manager_id } = answer;
   //     return this.connection
   //       .promise()
-  //       .query("DELETE FROM department ?", department);
+  //       .query("UPDATE employee SET manager_id = ? WHERE first_name = ?", [
+  //         manager_id,
+  //         first_name,
+  //       ]);
+  //   }
+
+  //   deleteDepartment(answer) {
+  //     return this.connection
+  //       .promise()
+  //       .query("DELETE FROM department WHERE id = ?", [answer]);
   //   }
 
   //   deleteRole() {
