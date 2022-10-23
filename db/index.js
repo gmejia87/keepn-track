@@ -55,21 +55,21 @@ class DB {
       ]);
   }
 
-  //   updateEmployeemanager() {
-  //     const { first_name, manager_id } = answer;
-  //     return this.connection
-  //       .promise()
-  //       .query("UPDATE employee SET manager_id = ? WHERE first_name = ?", [
-  //         manager_id,
-  //         first_name,
-  //       ]);
-  //   }
+  updateEmployeemanager(answer) {
+    const { first_name, manager_id } = answer;
+    return this.connection
+      .promise()
+      .query("UPDATE employee SET manager_id = ? WHERE first_name = ?", [
+        manager_id,
+        first_name,
+      ]);
+  }
 
-  //   deleteDepartment(answer) {
-  //     return this.connection
-  //       .promise()
-  //       .query("DELETE FROM department WHERE id = ?", [answer]);
-  //   }
+  // deleteDepartment() {
+  //   return this.connection
+  //     .promise()
+  //     .query("DELETE FROM department WHERE id = ?");
+  // }
 
   //   deleteRole() {
   //     return this.connection.promise().query("DELETE FROM role WHERE id = ?");

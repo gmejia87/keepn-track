@@ -17,7 +17,7 @@ const promptUser = () => {
           "Add a Role",
           "Add an Employee",
           "Update Employee Role",
-          // "Update Employee Manager",
+          "Update Employee Manager",
           // "Delete a Department",
           // "Delete a Role",
           // "Delete an Employee",
@@ -39,10 +39,10 @@ const promptUser = () => {
         addEmployee();
       } else if (answer.type === "Update Employee Role") {
         updateEmployeerole();
+      } else if (answer.type === "Update Employee Manager") {
+        updateEmployeemanager();
       }
-      // else if (answer.type === "Update Employee Manager") {
-      //   updateEmployeemanager();
-      // } else if (answer.type === "Delete a Department") {
+      // else if (answer.type === "Delete a Department") {
       //   deleteDepartment();
       // } else if (answer.type === "Delete a Role") {
       //   deleteRole();
@@ -193,40 +193,42 @@ function updateEmployeerole() {
     });
 }
 
-// function updateEmployeemanager() {
-//   inquirer
-//     .prompt([
-//       {
-//         type: "list",
-//         name: "first_name",
-//         message: "Which employee's manager do you want to update?",
-//         choices: [
-//           "Daffy",
-//           "Minni",
-//           "Cindy",
-//           "The",
-//           "Mayor",
-//           "Simon",
-//           "Nemo",
-//           "Dory",
-//           "Sally",
-//         ],
-//       },
-//       {
-//         type: "list",
-//         name: "manager_id",
-//         message: "Who's the employee's new manager?",
-//         choices: ["1", "4", "7"],
-//       },
-//     ])
-//     .then((answer) => {
-//       db.updateEmployeerole(answer)
-//         .then(() => {
-//           console.log(`Updated ${answer.first_name} manager.`);
-//         })
-//         .then(() => promptUser());
-//     });
-// }
+function updateEmployeemanager() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "first_name",
+        message: "Which employee's manager do you want to update?",
+        choices: [
+          "Daffy",
+          "Minni",
+          "Cindy",
+          "The",
+          "Mayor",
+          "Simon",
+          "Nemo",
+          "Dory",
+          "Sally",
+        ],
+      },
+      {
+        type: "list",
+        name: "manager_id",
+        message: "Who's the employee's new manager?",
+        choices: ["1", "4", "7"],
+      },
+    ])
+    .then((answer) => {
+      db.updateEmployeemanager(answer)
+        .then(() => {
+          console.log(
+            `Updated ${answer.first_name} manager to ${answer.manager_id}.`
+          );
+        })
+        .then(() => promptUser());
+    });
+}
 
 // function deleteDepartment() {
 //   inquirer
