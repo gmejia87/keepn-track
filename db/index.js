@@ -44,11 +44,28 @@ class DB {
       .promise()
       .query("INSERT INTO employee SET ?", employee);
   }
-  // deleteDepartment()
-  // deleteRole()
-  // deleteEmployee()
-  // updateEmployeerole()
+
+  updateEmployeerole() {
+    return this.connection
+      .promise()
+      .query("UPDATE employee SET role_id = ? WHERE id = ?");
+  }
+
   // updateEmployeemanager()
+
+  //   deleteDepartment(department) {
+  //     return this.connection
+  //       .promise()
+  //       .query("DELETE FROM department ?", department);
+  //   }
+
+  //   deleteRole() {
+  //     return this.connection.promise().query("DELETE FROM role WHERE id = ?");
+  //   }
+
+  //   deleteEmployee() {
+  //     return this.connection.promise().query("DELETE FROM employee WHERE id = ?");
+  //   }
 }
 
 module.exports = new DB(connection);

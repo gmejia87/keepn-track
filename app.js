@@ -16,11 +16,11 @@ const promptUser = () => {
           "Add a Department",
           "Add a Role",
           "Add an Employee",
-          "Delete a Department",
-          "Delete a Role",
-          "Delete an Employee",
           "Update Employee Role",
-          "Update Employee Manager",
+          // "Update Employee Manager",
+          // "Delete a Department",
+          // "Delete a Role",
+          // "Delete an Employee",
         ],
       },
     ])
@@ -37,7 +37,18 @@ const promptUser = () => {
         addRole();
       } else if (answer.type === "Add an Employee") {
         addEmployee();
+      } else if (answer.type === "Update Employee Role") {
+        updateEmployeerole();
       }
+      // else if (answer.type === "Update Employee Manager") {
+      //   updateEmployeeManager();
+      // } else if (answer.type === "Delete a Department") {
+      //   deleteDepartment();
+      // } else if (answer.type === "Delete a Role") {
+      //   deleteRole();
+      // } else if (answer.type === "Delete an Employee") {
+      //   deleteEmployee();
+      // }
     });
 };
 
@@ -130,14 +141,94 @@ function addEmployee() {
     ])
     .then((answer) => {
       db.addEmployee(answer).then(() => {
-        console.log(`Employee added.`);
+        console.log(`Employee ${answer.first_name} added.`);
       });
     });
 }
 
-// deleteDepartment()
-// deleteRole()
-// deleteEmployee()
-// updateEmployeerole()
-// updateEmployeemanager()
+function updateEmployeerole() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "first_name",
+        message: "Which employee's role do you want to update?",
+        choices: [
+          "Daffy",
+          "Minni",
+          "Cindy",
+          "The",
+          "Mayor",
+          "Simon",
+          "Nemo",
+          "Dory",
+          "Sally",
+        ],
+      },
+      {
+        type: "list",
+        name: "role_id",
+        message: "What role do you want to assign them?",
+        choices: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      },
+    ])
+    .then((answer) => {
+      db.updateEmployeerole(answer).then(() => {
+        console.log(`Updated employee's role.`);
+      });
+    });
+}
+
+// function updateEmployeemanager()
+
+// function deleteDepartment() {
+//   inquirer
+//     .prompt([
+//       {
+//         type: "list",
+//         name: "name",
+//         message: "What department do you want to delete?",
+//         choices: ["Stem", "Labor", "Delivery"],
+//       },
+//     ])
+//     .then((answer) => {
+//       db.deleteDepartment(answer).then(() => {
+//         console.log(`Deparment deleted.`);
+//       });
+//     });
+// }
+
+// function deleteRole() {
+//   inquirer
+//     .prompt([
+//       {
+//         type: "list",
+//         name: "name",
+//         message: "What role do you want to delete?",
+//         choices: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+//       },
+//     ])
+//     .then((answer) => {
+//       db.deleteRole(answer).then(() => {
+//         console.log(`Role deleted.`);
+//       });
+//     });
+// }
+// function deleteEmployee() {
+//   inquirer
+//     .prompt([
+//       {
+//         type: "list",
+//         name: "name",
+//         message: "Which employee do you want to delete?",
+//         choices: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+//       },
+//     ])
+//     .then((answer) => {
+//       db.deleteRole(answer).then(() => {
+//         console.log(`Role deleted.`);
+//       });
+//     });
+// }
+
 promptUser();
