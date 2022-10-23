@@ -18,9 +18,9 @@ Copy/clone code into your local machine.
 
 Once code is copied to local machine, run node, answer prompt questions to see desired results.
 
-## Screenshots
-
 ## Demo video
+
+https://user-images.githubusercontent.com/108241017/197418995-de63e86e-0cdd-49f6-bed5-2eed2caffc40.mp4
 
 ### Questions
 
